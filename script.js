@@ -1,9 +1,31 @@
-// === NAV scrolled state ===
+// === Mobile detect (used to disable heavy effects) ===
+const isMobile = matchMedia('(max-width: 768px)').matches
+  || matchMedia('(hover: none) and (pointer: coarse)').matches;
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// === NAV scrolled state (rAF throttled) ===
 const nav = document.querySelector('.nav');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 40) nav.classList.add('scrolled');
+let lastScrollY = 0;
+let scrollTicking = false;
+
+function onScroll() {
+  lastScrollY = window.scrollY;
+  if (!scrollTicking) {
+    requestAnimationFrame(handleScroll);
+    scrollTicking = true;
+  }
+}
+
+function handleScroll() {
+  if (lastScrollY > 40) nav.classList.add('scrolled');
   else nav.classList.remove('scrolled');
-});
+
+  if (!isMobile && !reduceMotion) updateParallax();
+  updateProcessLine();
+  scrollTicking = false;
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
 
 // === Reveal on scroll ===
 const revealTargets = document.querySelectorAll(
@@ -20,21 +42,22 @@ const io = new IntersectionObserver((entries) => {
       io.unobserve(target);
     }
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
 
 revealTargets.forEach(el => io.observe(el));
 
-// === Parallax (subtle) ===
+// === Parallax (desktop only, rAF throttled) ===
 const parallaxEls = document.querySelectorAll('[data-parallax]');
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
+function updateParallax() {
+  const vh = window.innerHeight;
   parallaxEls.forEach(el => {
     const speed = parseFloat(el.dataset.parallax);
     const rect = el.getBoundingClientRect();
-    const offsetFromCenter = rect.top + rect.height / 2 - window.innerHeight / 2;
+    if (rect.bottom < 0 || rect.top > vh) return;
+    const offsetFromCenter = rect.top + rect.height / 2 - vh / 2;
     el.style.transform = `translate3d(0, ${offsetFromCenter * speed * -1}px, 0)`;
   });
-}, { passive: true });
+}
 
 // === Cases slider buttons ===
 const rail = document.getElementById('casesRail');
@@ -51,7 +74,7 @@ const processLineFill = document.querySelector('.process__line-fill');
 const processSection = document.querySelector('.process__rail');
 
 function updateProcessLine() {
-  if (!processSection || !processLineFill) return;
+  if (!processSection || !processLineFill || isMobile) return;
   const rect = processSection.getBoundingClientRect();
   const vh = window.innerHeight;
   const start = vh * 0.8;
@@ -60,21 +83,10 @@ function updateProcessLine() {
   progress = Math.max(0, Math.min(1, progress));
   processLineFill.setAttribute('x2', 1200 * progress);
 }
-window.addEventListener('scroll', updateProcessLine, { passive: true });
 updateProcessLine();
 
-// === Hover glow on cards ===
-document.querySelectorAll('.plan, .step, .qa').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    card.style.setProperty('--mx', `${x}%`);
-    card.style.setProperty('--my', `${y}%`);
-  });
-});
-
-// === Smooth scroll for nav anchors ===
+// === Smooth scroll for nav anchors + close mobile menu ===
+const navMenu = document.querySelector('.nav');
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', (e) => {
     const id = a.getAttribute('href');
@@ -83,6 +95,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       if (el) {
         e.preventDefault();
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.body.classList.remove('nav-open');
       }
     }
   });
@@ -93,9 +106,15 @@ const qas = document.querySelectorAll('.qa');
 qas.forEach(qa => {
   qa.addEventListener('toggle', () => {
     if (qa.open) {
-      qas.forEach(other => {
-        if (other !== qa) other.open = false;
-      });
+      qas.forEach(other => { if (other !== qa) other.open = false; });
     }
   });
 });
+
+// === Mobile nav toggle ===
+const navToggle = document.querySelector('.nav__toggle');
+if (navToggle) {
+  navToggle.addEventListener('click', () => {
+    document.body.classList.toggle('nav-open');
+  });
+}
