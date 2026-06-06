@@ -1015,11 +1015,8 @@ body {
 .phone__overlay {
   position: absolute;
   inset: 0;
-  padding: 36px 14px 14px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.6) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.2) 100%);
+  pointer-events: none;
 }
 
 .ph-meta {
