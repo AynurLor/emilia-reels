@@ -55,9 +55,10 @@ img { max-width: 100%; height: auto; }
 .dim { color: var(--ink-muted); }
 
 em {
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-weight: 300;
+  font-family: 'Syne', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -546,8 +547,8 @@ body {
 }
 
 .hero__title {
-  font-family: 'Fraunces', serif;
-  font-weight: 300;
+  font-family: 'Syne', sans-serif;
+  font-weight: 500;
   font-size: clamp(40px, 7.2vw, 104px);
   line-height: 0.96;
   letter-spacing: -0.035em;
@@ -560,7 +561,7 @@ body {
 }
 
 .hero__title .line em {
-  font-style: italic;
+  font-style: normal;
   color: var(--lime);
   text-shadow: 0 0 60px var(--lime-glow);
 }
@@ -705,9 +706,9 @@ body {
   align-items: center;
   white-space: nowrap;
   animation: ticker 50s linear infinite;
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-weight: 300;
+  font-family: 'Syne', sans-serif;
+  font-style: normal;
+  font-weight: 500;
   font-size: clamp(28px, 4vw, 56px);
   color: var(--ink);
   letter-spacing: -0.02em;
@@ -737,8 +738,8 @@ body {
 }
 
 .section-head__title {
-  font-family: 'Fraunces', serif;
-  font-weight: 300;
+  font-family: 'Syne', sans-serif;
+  font-weight: 500;
   font-size: clamp(36px, 5vw, 64px);
   letter-spacing: -0.03em;
   line-height: 1;
@@ -852,8 +853,8 @@ body {
 .portrait-corner--br { bottom: 8px; right: 8px; border-left: none; border-top: none; }
 
 .display {
-  font-family: 'Fraunces', serif;
-  font-weight: 300;
+  font-family: 'Syne', sans-serif;
+  font-weight: 500;
   font-size: clamp(40px, 5.5vw, 80px);
   line-height: 0.98;
   letter-spacing: -0.035em;
@@ -881,8 +882,8 @@ body {
 }
 
 .stat__value {
-  font-family: 'Fraunces', serif;
-  font-weight: 300;
+  font-family: 'Syne', sans-serif;
+  font-weight: 500;
   font-size: clamp(40px, 4.5vw, 60px);
   letter-spacing: -0.04em;
   line-height: 1;
@@ -937,7 +938,7 @@ body {
 
 .case {
   flex: 0 0 auto;
-  width: 280px;
+  width: 340px;
   scroll-snap-align: start;
   transition: transform 0.5s cubic-bezier(0.2,0.8,0.2,1);
 }
@@ -953,15 +954,15 @@ body {
 
 .phone {
   position: relative;
-  aspect-ratio: 9/19.5;
-  border-radius: 36px;
+  aspect-ratio: 9/18;
+  border-radius: 38px;
   background: #0a0a0e;
-  padding: 8px;
+  padding: 9px;
   border: 1px solid rgba(255,255,255,0.12);
   box-shadow:
     0 30px 80px -20px rgba(0,0,0,0.8),
     inset 0 1px 0 rgba(255,255,255,0.15);
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .phone__screen {
@@ -983,23 +984,23 @@ body {
 
 .phone__screen--1 {
   background-image: url("https://static.tildacdn.pub/tild6139-6662-4633-a366-316166656330/3Nbg7nSVzFkdM0ZPgsAR.jpg");
-  background-size: cover; background-position: center;
+  background-size: cover; background-position: center top;
 }
 .phone__screen--2 {
   background-image: url("https://static.tildacdn.pub/tild6636-6537-4466-b833-343830383236/rBLOwCJ6KMFKBM-UmRk0.jpg");
-  background-size: cover; background-position: center;
+  background-size: cover; background-position: center top;
 }
 .phone__screen--3 {
   background-image: url("https://static.tildacdn.pub/tild6661-6338-4138-b266-613961323938/ifIttmwt4LTfKC2pmZ4D.jpg");
-  background-size: cover; background-position: center;
+  background-size: cover; background-position: center top;
 }
 .phone__screen--4 {
   background-image: url("https://static.tildacdn.pub/tild6564-6139-4461-b938-333533333831/7DQappo0KP37RxFbaaFK.jpg");
-  background-size: cover; background-position: center;
+  background-size: cover; background-position: center top;
 }
 .phone__screen--5 {
   background-image: url("https://static.tildacdn.pub/tild3864-3065-4036-b935-356634636665/2e0oqZLHBjCmHZRVW6Fi.jpg");
-  background-size: cover; background-position: center;
+  background-size: cover; background-position: center top;
 }
 
 .phone__notch {
@@ -1025,8 +1026,8 @@ body {
 }
 
 .ph-title {
-  font-family: 'Fraunces', serif;
-  font-weight: 300;
+  font-family: 'Syne', sans-serif;
+  font-weight: 500;
   font-size: 22px;
   line-height: 1;
   color: #fff;
@@ -1064,8 +1065,8 @@ body {
 }
 
 .case__metric {
-  font-family: 'Fraunces', serif;
-  font-weight: 300;
+  font-family: 'Syne', sans-serif;
+  font-weight: 500;
   font-size: 32px;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -1144,9 +1145,9 @@ body {
 .step:hover { transform: translateY(-6px); background: var(--glass-2); }
 
 .step__num {
-  font-family: 'Fraunces', serif;
-  font-weight: 300;
-  font-style: italic;
+  font-family: 'Syne', sans-serif;
+  font-weight: 500;
+  font-style: normal;
   font-size: 56px;
   letter-spacing: -0.04em;
   line-height: 1;
@@ -1162,7 +1163,7 @@ body {
 .step__icon svg { width: 100%; height: 100%; }
 
 .step h3 {
-  font-family: 'Fraunces', serif;
+  font-family: 'Syne', sans-serif;
   font-weight: 400;
   font-size: 24px;
   letter-spacing: -0.02em;
@@ -1241,8 +1242,8 @@ body {
 .plan__head { display: flex; flex-direction: column; gap: 8px; }
 .plan__tag { color: var(--ink-muted); }
 .plan__title {
-  font-family: 'Fraunces', serif;
-  font-weight: 300;
+  font-family: 'Syne', sans-serif;
+  font-weight: 500;
   font-size: 36px;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -1256,14 +1257,14 @@ body {
   border-bottom: 1px solid var(--line);
 }
 .plan__currency {
-  font-family: 'Fraunces', serif;
-  font-weight: 300;
+  font-family: 'Syne', sans-serif;
+  font-weight: 500;
   font-size: 24px;
   color: var(--ink-muted);
 }
 .plan__amount {
-  font-family: 'Fraunces', serif;
-  font-weight: 300;
+  font-family: 'Syne', sans-serif;
+  font-weight: 500;
   font-size: 56px;
   letter-spacing: -0.04em;
   line-height: 1;
@@ -1436,8 +1437,8 @@ body {
 }
 
 .cta__title {
-  font-family: 'Fraunces', serif;
-  font-weight: 300;
+  font-family: 'Syne', sans-serif;
+  font-weight: 500;
   font-size: clamp(40px, 6vw, 80px);
   letter-spacing: -0.035em;
   line-height: 1;
@@ -1499,8 +1500,8 @@ body {
   gap: 14px;
 }
 .footer__name {
-  font-family: 'Fraunces', serif;
-  font-weight: 300;
+  font-family: 'Syne', sans-serif;
+  font-weight: 500;
   font-size: 22px;
   letter-spacing: -0.02em;
   line-height: 1.2;
@@ -1517,8 +1518,8 @@ body {
   flex-wrap: wrap;
 }
 .footer__phone {
-  font-family: 'Fraunces', serif;
-  font-weight: 300;
+  font-family: 'Syne', sans-serif;
+  font-weight: 500;
   font-size: 24px;
   letter-spacing: -0.02em;
   color: var(--lime);
@@ -1724,11 +1725,11 @@ body.nav-open .nav__toggle span:nth-child(3) { transform: translateY(-5.5px) rot
   /* === CASES === */
   .cases { padding: 60px 0 70px; }
   .cases__rail { padding: 12px 16px 32px; gap: 18px; }
-  .case { width: 240px; }
+  .case { width: 300px; }
   .case:hover { transform: none; }
-  .phone { padding: 6px; border-radius: 28px; }
-  .phone__screen { border-radius: 22px; }
-  .phone__notch { width: 70px; height: 18px; top: 10px; }
+  .phone { padding: 7px; border-radius: 32px; }
+  .phone__screen { border-radius: 25px; }
+  .phone__notch { width: 78px; height: 20px; top: 11px; }
   .ph-title { font-size: 18px; }
   .ph-meta { font-size: 8px; }
   .ph-play { width: 40px; height: 40px; }
@@ -1819,7 +1820,7 @@ body.nav-open .nav__toggle span:nth-child(3) { transform: translateY(-5.5px) rot
   .display { font-size: 34px; }
   .section-head__title { font-size: 32px; }
   .cta__title { font-size: 32px; }
-  .case { width: 220px; }
+  .case { width: 280px; }
   .stat__value { font-size: 36px; min-width: 75px; }
 }
 
